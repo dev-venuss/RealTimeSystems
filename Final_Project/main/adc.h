@@ -16,12 +16,19 @@
 #define NUM_SAMPLES 100
 #define ADC_MAX_VALUE 4095
 
+#define ADC_CHANNEL_3 ADC1_CHANNEL_4
+#define ADC_ATTENUATION ADC_ATTEN_DB_12
+#define NUM_SAMPLES 100
+#define ADC_MAX_VALUE 4095
+
 /*Function prototypes*/
 
 void adc_config(void);
 uint16_t adc_read_smooth(void);
+uint8_t adc_read_percentage(void);
 
 void adc_config2(void);
 uint16_t adc_read_smooth2(void);
+
 
 #endif 

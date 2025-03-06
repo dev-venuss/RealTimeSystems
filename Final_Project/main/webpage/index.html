@@ -12,7 +12,7 @@
     <script src="app.js" defer></script>
     <style>
         body {
-            background-image: url('https://i.pinimg.com/736x/88/d9/96/88d99660495f97fd7286771cbe4cf253.jpg'); /* Cambia esto por la ruta correcta de tu imagen */
+            background-image: url('https://static.vecteezy.com/system/resources/previews/002/254/545/large_2x/lilac-pastel-purple-color-watercolor-texture-background-free-photo.jpg'); /* Cambia esto por la ruta correcta de tu imagen */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -138,13 +138,10 @@
         <button onclick="setServoAngle()">Set Angle</button>
     </div>
     <div>
-        <button onclick="setAutomaticMode()">Automatic Mode</button>
+        <button onclick="toggleMode()">Toggle Mode</button>
     </div>
-    
 </section>
 
-
-<!-- Add this section to your index.html file -->
 <section id="current_time" aria-labelledby="time-heading">
     <h2 id="time-heading">Current Time</h2>
     <div id="current_time_display">Loading...</div>
@@ -164,20 +161,16 @@
         <label for="register_minute">Minute (0-59):</label>
         <input id="register_minute" type="number" min="0" max="59" required>
     </div>
-    <div>
-        <label for="register_days">Days (e.g., 1010100 for Mon, Wed, Fri):</label>
-        <input id="register_days" type="text" pattern="[01]{7}" required>
-    </div>
+    
     <button onclick="configureRegister()">Configure Register</button>
     <button onclick="deleteRegister()">Delete Register</button>
     <div id="register_status"></div>
 </section>
 
-
 </main>
 
 <footer>
-    <p>ESP32 Application © 2025 - Laura Daniela Alarcon</p>
+<p>ESP32 Application © 2025 - Laura Daniela Alarcon</p>
 </footer>
 
 </body>

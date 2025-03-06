@@ -7,6 +7,8 @@ let wifiConnectInterval = null;
 let intensity_red = 100;
 let intensity_green = 100;
 let intensity_blue = 100;
+let inManualMode = true;
+
 
 /**
  * Initialize functions here.
@@ -921,10 +923,96 @@ function displayCurrentTime() {
         const minutes = String(now.getMinutes()).padStart(2, '0');
         const seconds = String(now.getSeconds()).padStart(2, '0');
         const timeString = `${hours}:${minutes}:${seconds}`;
+		//console.log(timeString);
         document.getElementById('current_time_display').textContent = timeString;
     }, 1000);
 }
+displayCurrentTime();
 
+//function setServoAngle() {
+ //   var angle = document.getElementById('servo_angle').value;
+//    var requestData = {
+//        "angle": angle
+//    };
+
+//    $.ajax({
+//        url: '/servo.json',
+//        dataType: 'json',
+//        method: 'POST',
+//        cache: false,
+//        data: JSON.stringify(requestData),
+//        contentType: 'application/json',
+//        success: function(response) {
+//            console.log(response);
+//        },
+//        error: function(xhr, status, error) {
+//            console.error(error);
+//        }
+//    });
+//}
+
+function configureRegister() {
+    var registerNumber = document.getElementById('register_number').value;
+    var hour = document.getElementById('register_hour').value;
+    var minute = document.getElementById('register_minute').value;
+    var days = document.getElementById('register_days').value;
+
+    var requestData = {
+        "number": registerNumber,
+        "hour": hour,
+        "minute": minute,
+        "days": days
+    };
+
+    $.ajax({
+        url: '/configure_register.json',
+        dataType: 'json',
+        method: 'POST',
+        cache: false,
+        data: JSON.stringify(requestData),
+        contentType: 'application/json',
+        success: function(response) {
+            document.getElementById('register_status').textContent = 'Register configured successfully';
+        },
+        error: function(xhr, status, error) {
+            document.getElementById('register_status').textContent = 'Error configuring register: ' + error;
+        }
+    });
+}
+
+function deleteRegister() {
+    var registerNumber = document.getElementById('register_number').value;
+
+    var requestData = {
+        "number": registerNumber
+    };
+
+    $.ajax({
+        url: '/delete_register.json',
+        dataType: 'json',
+        method: 'POST',
+        cache: false,
+        data: JSON.stringify(requestData),
+        contentType: 'application/json',
+        success: function(response) {
+            document.getElementById('register_status').textContent = 'Register deleted successfully';
+        },
+        error: function(xhr, status, error) {
+            document.getElementById('register_status').textContent = 'Error deleting register: ' + error;
+        }
+    });
+}
+/*
+function displayCurrentTime() {
+    setInterval(function() {
+        $.getJSON('/current_time', function(data) {
+            const currentTime = data.time;
+            document.getElementById('current_time_display').textContent = currentTime;
+        });
+    }, 1000);
+}
+	*/
+/* LO ANTERIOR QUE TENIAAAAAAAAAAAAAAAAAAAA SERVO
 function configureRegister() {
     const registerNumber = document.getElementById('register_number').value;
     const registerHour = document.getElementById('register_hour').value;
@@ -1007,4 +1095,4 @@ function displayCurrentTime() {
 
     
 
-
+*/

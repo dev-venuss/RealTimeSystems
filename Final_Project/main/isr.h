@@ -8,6 +8,7 @@
 #define ESP_INTR_FLAG_DEFAULT 0
 
 extern volatile uint16_t flags;
+extern bool is_manual_mode;
 
 void isr_install(void);
 void IRAM_ATTR isr_handler(void *args);

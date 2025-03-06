@@ -1,7 +1,10 @@
 #include "servo.h"
+#include "driver/ledc.h"
+#include "esp_err.h"
 
-#define SERVO_PIN 34
-#define SERVO_CHANNEL LEDC_CHANNEL_6
+
+#define SERVO_PIN 4
+#define SERVO_CHANNEL LEDC_CHANNEL_2
 #define SERVO_TIMER LEDC_TIMER_1
 #define SERVO_FREQ 50
 #define SERVO_RESOLUTION LEDC_TIMER_8_BIT

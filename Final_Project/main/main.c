@@ -38,6 +38,7 @@
      adc_config2();
 
      servo_init();
+     servo_set_angle(0);
      init_uart0();
 
      LED1 = (LED){
@@ -67,6 +68,7 @@
  
      wifi_app_start();
      http_server_start();
+     isr_install();
 
     
 

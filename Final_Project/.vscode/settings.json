@@ -8,5 +8,7 @@
     "idf.toolsPathWin": "C:\\Users\\laura\\.espressif",
     "files.associations": {
         "adc.h": "c"
-    }
+    },
+    "idf.flashType": "UART",
+    "idf.portWin": "COM8"
 }

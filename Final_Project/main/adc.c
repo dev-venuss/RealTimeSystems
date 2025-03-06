@@ -62,3 +62,8 @@ uint16_t adc_read_smooth2(void) {
     return (smooth_reading2 * 255) / ADC_MAX_VALUE;
 }
 
+
+uint8_t adc_read_percentage(void){
+    uint16_t adc_value = adc_read_smooth();
+    return (adc_value * 100) / 255;
+}

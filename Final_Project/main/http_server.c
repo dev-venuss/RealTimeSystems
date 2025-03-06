@@ -53,6 +53,7 @@
  #include "servo.h"
  #include "adc.h"
  
+ #include "schedule_register.h"
 
 
  // Tag used for ESP serial console messages
@@ -100,6 +101,11 @@
  
  uint8_t s_led_state = 0;
  
+
+
+
+
+
  float voltage_to_temp(float voltage) {
     // Calculate the resistance of the NTC
     float resistencia_ntc = (22 * voltage) / (3.3 - voltage);
@@ -304,6 +310,7 @@
  }
 
  //servomotor
+ /*
  static esp_err_t http_server_set_servo_angle_handler(httpd_req_t *req) {
     ESP_LOGI(TAG, "/set_servo_angle.json requested");
 
@@ -325,7 +332,7 @@
 
     httpd_resp_send(req, NULL, 0);
     return ESP_OK;
-}
+}*/
 
 static esp_err_t http_server_set_automatic_mode_handler(httpd_req_t *req) {
     ESP_LOGI(TAG, "/set_automatic_mode.json requested");
@@ -352,8 +359,6 @@ static esp_err_t http_server_servo_handler(httpd_req_t *req) {
 	char* valueRangeMin_str = NULL;
 	char* valueRangeMax_str = NULL;
     int content_length;
-
-    ESP_LOGI(TAG, "/intensity_rgb_up.json requested");
 
     // Get the "Content-Length" header to determine the length of the request body
     header_len = httpd_req_get_hdr_value_len(req, "Content-Length");
@@ -415,7 +420,7 @@ static esp_err_t http_server_servo_handler(httpd_req_t *req) {
 	cJSON* valueRangeMin_json = cJSON_GetObjectItem(root,"valueRangeMin");
 	cJSON* valueRangeMax_json = cJSON_GetObjectItem(root,"valueRangeMax");
 
-	
+	/*
     if (color_json == NULL || !cJSON_IsString(color_json) || valueRangeMin_json == NULL || !cJSON_IsString(valueRangeMin_json) || valueRangeMax_json == NULL || !cJSON_IsString(valueRangeMax_json) ) {
         cJSON_Delete(root);
         // Missing or invalid JSON fields
@@ -423,7 +428,7 @@ static esp_err_t http_server_servo_handler(httpd_req_t *req) {
         ESP_LOGI(TAG, "Missing or invalid JSON data fields");
         return ESP_FAIL;
     }
-
+*/
 
 	color_str = strdup(color_json->valuestring);
 	valueRangeMin_str = strdup(valueRangeMin_json->valuestring);
